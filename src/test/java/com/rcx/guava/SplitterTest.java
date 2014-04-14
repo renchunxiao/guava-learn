@@ -1,6 +1,7 @@
 package com.rcx.guava;
 
-import java.nio.charset.Charset;
+import static junit.framework.Assert.assertEquals;
+
 import java.util.List;
 import java.util.Map;
 
@@ -9,8 +10,6 @@ import org.junit.Test;
 import com.google.common.base.Splitter;
 import com.google.common.base.Splitter.MapSplitter;
 import com.google.common.collect.Maps;
-
-import static junit.framework.Assert.assertEquals;
 
 public class SplitterTest
 {
