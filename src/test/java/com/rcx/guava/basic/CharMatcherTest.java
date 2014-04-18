@@ -1,4 +1,4 @@
-package com.rcx.guava;
+package com.rcx.guava.basic;
 
 import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
