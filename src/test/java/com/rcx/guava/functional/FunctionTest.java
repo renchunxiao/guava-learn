@@ -1,4 +1,4 @@
-package com.rcx.guava.function;
+package com.rcx.guava.functional;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -13,6 +13,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.rcx.guava.entity.City;
 import com.rcx.guava.entity.State;
+import com.rcx.guava.functional.DateFormateFunction;
+import com.rcx.guava.functional.StateToCityStringFunction;
 
 public class FunctionTest
 {
@@ -47,6 +49,7 @@ public class FunctionTest
 
         Function<String, State> lookup = Functions.forMap(stateMap);
         assertEquals(newYork, lookup.apply("NY"));
+        lookup.apply("BJ");
 
     }
 

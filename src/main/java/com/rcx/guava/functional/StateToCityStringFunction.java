@@ -1,4 +1,4 @@
-package com.rcx.guava.function;
+package com.rcx.guava.functional;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;

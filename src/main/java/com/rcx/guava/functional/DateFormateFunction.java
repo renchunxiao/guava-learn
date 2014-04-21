@@ -1,4 +1,4 @@
-package com.rcx.guava.function;
+package com.rcx.guava.functional;
 
 import java.util.Date;
 

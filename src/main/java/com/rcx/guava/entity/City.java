@@ -1,11 +1,15 @@
 package com.rcx.guava.entity;
 
+import com.rcx.guava.enums.Climate;
+
 public class City
 {
     private String name;
     private String zipCode;
     /** 人口 */
     private int population;
+    private Climate climate;
+    private int averageRainfall;
 
     public String getName()
     {
@@ -49,5 +53,25 @@ public class City
     public String toString()
     {
         return this.name;
+    }
+
+    public Climate getClimate()
+    {
+        return climate;
+    }
+
+    public void setClimate(Climate climate)
+    {
+        this.climate = climate;
+    }
+
+    public int getAverageRainfall()
+    {
+        return averageRainfall;
+    }
+
+    public void setAverageRainfall(int averageRainfall)
+    {
+        this.averageRainfall = averageRainfall;
     }
 }

@@ -3,11 +3,14 @@ package com.rcx.guava.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.rcx.guava.enums.Region;
+
 public class State
 {
     private String name;
     private String code;
     private Set<City> mainCities = new HashSet<City>();
+    private Region region;
 
     public State(String name, String code, Set<City> mainCities)
     {
@@ -45,5 +48,15 @@ public class State
     public void setMainCities(Set<City> mainCities)
     {
         this.mainCities = mainCities;
+    }
+
+    public Region getRegion()
+    {
+        return region;
+    }
+
+    public void setRegion(Region region)
+    {
+        this.region = region;
     }
 }
