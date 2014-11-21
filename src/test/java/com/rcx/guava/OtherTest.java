@@ -2,7 +2,6 @@ package com.rcx.guava;
 
 import org.junit.Test;
 
-import com.google.common.base.Suppliers;
 
 public class OtherTest
 {

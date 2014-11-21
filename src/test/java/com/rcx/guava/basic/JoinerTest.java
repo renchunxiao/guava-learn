@@ -1,6 +1,7 @@
 package com.rcx.guava.basic;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotSame;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
-import org.junit.Test;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Maps;
@@ -34,22 +34,29 @@ public class JoinerTest
         map.put("key3", "value3");
     }
 
-    @Test
+    // @Test
     public void joinerTest()
     {
         String string = Joiner.on("|").skipNulls().join(strings);
-        assertEquals("rcx|rcx1|rcx2", string);
+        String expected = "rcx|rcx1|rcx2";
+
+        String string1 = Joiner.on("|").useForNull("null").join(strings);
+        String expected1 = "rcx|rcx1|null|rcx2";
+
+        assertEquals(expected, string);
+        assertEquals(expected1, string1);
     }
 
-    @Test
+    // @Test
     public void immutableTest()
     {
         Joiner joiner = Joiner.on("|");
-        joiner.useForNull("aaa");
-        joiner.join(strings);
+        Joiner joiner2 = joiner.useForNull("aaa");
+        joiner2.join(strings);
+        assertNotSame(joiner, joiner2);
     }
 
-    @Test
+    // @Test
     public void whitStringBuilderTest()
     {
         StringBuilder builder = new StringBuilder();
@@ -57,7 +64,6 @@ public class JoinerTest
         assertEquals("rcx|rcx1|rcx2", builder.toString());
     }
 
-    
     /**
      * 用于查看JDK的String.split方法
      * 
@@ -75,7 +81,7 @@ public class JoinerTest
         }
     }
 
-    @Test
+    // @Test
     public void appendableTest() throws IOException
     {
         FileWriter writer = new FileWriter("a.txt");
@@ -84,12 +90,12 @@ public class JoinerTest
         writer.close();
     }
 
-    @Test
-    public void testMapJoiner()
+    // @Test
+    public void mapJoinerTest()
     {
-        String expectedString = "key1=value1#key2=value2#key3=value3";
-        String returnedString = Joiner.on("#").withKeyValueSeparator("=").join(map);
-        assertEquals(expectedString, returnedString);
+        String expected = "key1=value1#key2=value2#key3=value3";
+        String returned = Joiner.on("#").withKeyValueSeparator("=").join(map);
+        assertEquals(expected, returned);
     }
-    
+
 }

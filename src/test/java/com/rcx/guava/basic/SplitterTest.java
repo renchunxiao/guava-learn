@@ -2,6 +2,7 @@ package com.rcx.guava.basic;
 
 import static junit.framework.Assert.assertEquals;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -16,8 +17,12 @@ public class SplitterTest
     @Test
     public void splitTest()
     {
-        List<String> strings = Splitter.on('|').splitToList("foo|bar|baz|||");
+        List<String> strings = Splitter.on('|').splitToList(" foo|bar|baz||| ");
+        Iterable<String> stringss = Splitter.on('|').trimResults().split(" foo | bar | baz | | |");
         System.out.println(strings.size());
+        System.out.println(strings);
+        
+        System.out.println(stringss);
     }
 
     @Test

@@ -11,25 +11,33 @@ public class StringsTest
     @Test
     public void padEndTest()
     {
-        String originalString = "foo";
-        String expectedString = "fooxxx";
-        String returnString = Strings.padEnd(originalString, 6, 'x');
-        assertEquals(expectedString, returnString);
-        
-        String returnString1 = Strings.padEnd(originalString, 2, 'x');
-        assertEquals(originalString, returnString1);
+        String original = "foo";
+        String expected = "fooxxx";
+        String returnString = Strings.padEnd(original, 6, 'x');
+        assertEquals(expected, returnString);
+
+        String returnString1 = Strings.padEnd(original, 2, 'x');
+        assertEquals(original, returnString1);
     }
 
     @Test
     public void padStartTest()
     {
-        String originalString = "foo";
-        String expectedString = "xxxfoo";
-        String returnString = Strings.padStart(originalString, 6, 'x');
-        assertEquals(expectedString, returnString);
-        
-        String returnString1 = Strings.padStart(originalString, 2, 'x');
-        assertEquals(originalString, returnString1);
+        String original = "foo";
+        String expected = "xxxfoo";
+        String returnString = Strings.padStart(original, 6, 'x');
+        assertEquals(expected, returnString);
+
+        String returnString1 = Strings.padStart(original, 2, 'x');
+        assertEquals(original, returnString1);
     }
 
+    @Test
+    public void empetyTest()
+    {
+        String empety = "";
+        assertEquals(null, Strings.emptyToNull(empety));
+        assertEquals(true, Strings.isNullOrEmpty(empety));
+        assertEquals(empety, Strings.nullToEmpty(null));
+    }
 }
