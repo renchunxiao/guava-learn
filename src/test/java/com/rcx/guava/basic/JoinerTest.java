@@ -14,19 +14,25 @@ import org.junit.Before;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Maps;
 
+/**
+ * Joiner 测试类
+ * 
+ * @author chunxiao.ren created on 2015年3月13日 下午2:41:56 
+ * @version 1.0
+ */
 public class JoinerTest
 {
-    private List<String> strings;
+    private List<String> list;
     private Map<String, String> map;
 
     @Before
     public void before()
     {
-        strings = new ArrayList<String>();
-        strings.add("rcx");
-        strings.add("rcx1");
-        strings.add(null);
-        strings.add("rcx2");
+        list = new ArrayList<String>();
+        list.add("rcx");
+        list.add("rcx1");
+        list.add(null);
+        list.add("rcx2");
 
         map = Maps.newLinkedHashMap();
         map.put("key1", "value1");
@@ -35,12 +41,15 @@ public class JoinerTest
     }
 
     // @Test
+    /**
+     * 测试普通 join 功能
+     */
     public void joinerTest()
     {
-        String string = Joiner.on("|").skipNulls().join(strings);
+        String string = Joiner.on("|").skipNulls().join(list);
         String expected = "rcx|rcx1|rcx2";
 
-        String string1 = Joiner.on("|").useForNull("null").join(strings);
+        String string1 = Joiner.on("|").useForNull("null").join(list);
         String expected1 = "rcx|rcx1|null|rcx2";
 
         assertEquals(expected, string);
@@ -48,49 +57,46 @@ public class JoinerTest
     }
 
     // @Test
+    /**
+     * 测试 Joiner 是不可变类
+     */
     public void immutableTest()
     {
         Joiner joiner = Joiner.on("|");
         Joiner joiner2 = joiner.useForNull("aaa");
-        joiner2.join(strings);
+        joiner2.join(list);
         assertNotSame(joiner, joiner2);
     }
 
     // @Test
+    /**
+     * 测试 Joiner 输出到 StringBuilder 中
+     */
     public void whitStringBuilderTest()
     {
         StringBuilder builder = new StringBuilder();
-        builder = Joiner.on("|").skipNulls().appendTo(builder, strings);
+        builder = Joiner.on("|").skipNulls().appendTo(builder, list);
         assertEquals("rcx|rcx1|rcx2", builder.toString());
     }
 
-    /**
-     * 用于查看JDK的String.split方法
-     * 
-     * @param args
-     */
-    public static void main(String[] args)
-    {
-        String testString = "Monday,Tuesday,,Thursday,Friday,,";
-        // parts is [Monday, Tuesday, , Thursday,Friday]
-        String[] parts = testString.split(",");
-        System.out.println(parts.length);
-        for (String string : parts)
-        {
-            System.out.println(string);
-        }
-    }
-
     // @Test
+    /**
+     * 测试将 appendTo 结果输出到文件
+     * 
+     * @throws IOException
+     */
     public void appendableTest() throws IOException
     {
         FileWriter writer = new FileWriter("a.txt");
         Joiner joiner = Joiner.on("#").useForNull(" ");
-        joiner.appendTo(writer, strings);
+        joiner.appendTo(writer, list);
         writer.close();
     }
 
     // @Test
+    /**
+     * 测试对 map 的 join 功能
+     */
     public void mapJoinerTest()
     {
         String expected = "key1=value1#key2=value2#key3=value3";
