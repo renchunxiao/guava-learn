@@ -6,7 +6,8 @@
 - [Splitter 使用](https://github.com/renchunxiao/guava-learn/blob/master/src/test/java/com/rcx/guava/basic/SplitterTest.java)
 - [Strings 使用](https://github.com/renchunxiao/guava-learn/blob/master/src/test/java/com/rcx/guava/basic/StringsTest.java)
 - [CharMatcher 使用](https://github.com/renchunxiao/guava-learn/blob/master/src/test/java/com/rcx/guava/basic/CharMatcherTest.java)
-- [PreconditionsTest 使用](https://github.com/renchunxiao/guava-learn/blob/master/src/test/java/com/rcx/guava/basic/PreconditionsTest.java)
+- [Preconditions 使用](https://github.com/renchunxiao/guava-learn/blob/master/src/test/java/com/rcx/guava/basic/PreconditionsTest.java)
+- [Objects 使用](https://github.com/renchunxiao/guava-learn/blob/master/src/main/java/com/rcx/guava/basic/ObjectsExample.java)
 
 #### guava 源码学习
 
@@ -14,3 +15,4 @@
 - [Splitter 源码学习](http://renchx.com/guava-splitter-source/)
 - [Strings 源码学习](http://renchx.com/guava-strings-source/)
 - [CharMatcher 源码学习](http://renchx.com/guava-CharMatcher-source/)
+- [ComparisonChain 源码学习](http://renchx.com/guava-ComparisonChain-source/)
